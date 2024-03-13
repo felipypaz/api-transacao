@@ -10,7 +10,7 @@ AWS.config.credentials = new AWS.Credentials({
 });
 
 const app = express();
-const PORT = process.env.PORT || 3000;
+const PORT = process.env.PORT || 3001;
 app.use(cors());
 AWS.config.update({ region: 'us-east-1' });
 const sqs = new AWS.SQS();
@@ -52,8 +52,6 @@ app.post('/transacao', async (req, res) => {
         res.status(500).json({ error: 'Erro ao processar as transações.' });
     }
 });
-
-
 
 app.get('/transacoes', async (req, res) => {
     const params = {
